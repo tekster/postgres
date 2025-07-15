@@ -1,4 +1,11 @@
+# Install Oracle client on postgres DB server
+# Assure development package is installed with postgres 
+sudo apt install postgresql-server-dev-17
 # Download and install the FDW extension on the local database host
+git clone https://github.com/laurenz/oracle_fdw.git
+
+
+
 CREATE EXTENSION oracle_fdw;
 
 CREATE SERVER ora_sv FOREIGN DATA WRAPPER oracle_fdw
@@ -19,4 +26,7 @@ CREATE FOREIGN TABLE f_ora_tbl(id int OPTIONS (key 'true'), name varchar(64), t_
 SELECT * FROM f_ora_tbl;
 
 
-REF: https://www.postgresql.fastware.com/postgresql-insider-fdw-ora-bas
+REF: https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+     https://github.com/laurenz/oracle_fdw?tab=readme-ov-file#5-installation-requirements -- Install
+     https://www.postgresql.fastware.com/postgresql-insider-fdw-ora-bas
+     
